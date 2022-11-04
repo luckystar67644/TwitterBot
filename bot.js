@@ -1,3 +1,4 @@
+//This is the list of languages we have for the tweets to be translated
 languageList = [
     { "code": "aa", "name": "Afar" },
     { "code": "ab", "name": "Abkhazian" },
@@ -210,7 +211,7 @@ const encodedParams = new URLSearchParams();
 encodedParams.append("q", tweetText);
 encodedParams.append("target", randomLang);
 encodedParams.append("source", "en");
-
+//Points to the Google Translate API we are using
 const options = {
   method: 'POST',
   url: 'https://google-translate1.p.rapidapi.com/language/translate/v2',
@@ -229,10 +230,10 @@ axios.request(options).then(function (response) {
 	console.error(error);
 });
 
-// This is the URL of a search for the latest tweets on the '#mediaarts' hashtag.
+// This is the URL of a search for the latest tweets on the '#STEM' hashtag.
 var stemSearch = {q: "#STEM", count: 10, result_type: "recent"}; 
 
-// This function finds the latest tweet with the #mediaarts hashtag, and retweets it.
+// This function finds the latest tweet with the #STEM hashtag, and retweets it.
 function retweetLatest() {
 	T.get('search/tweets', stemSearch, function (error, data) {
 	  // log out any errors and responses
