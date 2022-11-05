@@ -260,6 +260,15 @@ function retweetLatest() {
 	  }
 	});
 }
+// This function is meant for liking tweets that include the #STEM hashtag.
+T.get('search/tweets', {q: '#STEM, count: 4},
+function(err, data, response) {
+	var likeId = data.statuses[0].id_str;
+	T.post('favorites/create',{id:likeId}
+	       function(err, data, response){console.log("just liked a post)})
+	console.log(data);
+});
+	
 // This function is meant to quote retweet STEM-based tweets, responding back with #STEMAcademy
 
 const needle = require('needle');
