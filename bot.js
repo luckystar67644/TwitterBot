@@ -72,7 +72,14 @@ function retweetLatest() {
 	  }
 	});
 }
-
+// This function is meant to like tweets involving the #STEM hashtag.
+T.get('search/tweets', {q: '#STEM', count: 5}
+function(err, data, response) {
+	var likeId = data.statuses[0].id_str;
+	T.post('favorites/create', {id:likeId},
+	function(err,data,response) {console.log}("just liked a post")});
+	console.log(data);
+});
 // Try to retweet something as soon as we run the program...
 retweetLatest();
 // ...and then every hour after that. Time here is in milliseconds, so
